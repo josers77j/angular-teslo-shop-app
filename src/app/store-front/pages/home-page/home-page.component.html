@@ -1,24 +1,28 @@
 <section class="mx-5 py-4">
-  <h1 class="text-3xl font-bold font-montserrat">Todos los productos</h1>
+  <h1 class="text-3xl font-bold font-montserrat"></h1>
   <h2 class="text-xl mb-5">Para todos los gustos</h2>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-2 gap-3">
+  <app-pagination
+    [page]="productsResource.value()?.pages ?? 0"
+    [currentPage]="paginationService.currentPage()"
+  ></app-pagination>
+
+  <div
+    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-2 gap-3"
+  >
     <!-- product-card-->
-<product-card></product-card>
-<product-card></product-card>
-<product-card></product-card>
 
-<product-card></product-card>
-<product-card></product-card>
-<product-card></product-card>
+    @for(product of productsResource.value()?.products; track $index){
+    <product-card [productItem]="product"></product-card>
+    }
 
-<product-card></product-card>
-<product-card></product-card>
-<product-card></product-card>
-
+    <!-- Empty -->
+    @empty {
+    <p>No hay productos</p>
+    }
   </div>
-
-
-
-
+  <app-pagination
+    [page]="productsResource.value()?.pages ?? 0"
+    [currentPage]="paginationService.currentPage()"
+  ></app-pagination>
 </section>
