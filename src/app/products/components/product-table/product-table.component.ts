@@ -7,7 +7,7 @@ import { ProductImagePipe } from "@products/pipes/product-image.pipe";
 @Component({
   selector: "product-table",
   imports: [ProductImagePipe, RouterLink, CurrencyPipe],
-  templateUrl: "./product-table.Component.html",
+  templateUrl: "./product-table.component.html",
 })
 export class ProductTable {
   products = input.required<Product[]>();
